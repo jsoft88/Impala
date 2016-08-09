@@ -1312,6 +1312,7 @@ if __name__ == "__main__":
       p = subprocess.Popen(shlex.split(options.ldap_password_cmd), stdout=subprocess.PIPE,
                            stderr=subprocess.PIPE)
       options.ldap_password, stderr = p.communicate()
+      options.ldap_password = options.ldap_password.strip()
       if p.returncode != 0:
         print_to_stderr("Error retrieving LDAP password (command was '%s', error was: "
                         "'%s')" % (options.ldap_password_cmd, stderr.strip()))
